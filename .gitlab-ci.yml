@@ -1,0 +1,28 @@
+#
+# baseado em https://tobiasmaier.info/posts/2018/03/13/hosting-helm-repo-on-gitlab-pages.html
+#
+lint:
+  image:
+    name: hypnoglow/kubernetes-helm:3.0
+    entrypoint: ["/bin/sh", "-c"]
+  stage: test
+  script:
+    - helm lint charts/konga/
+
+pages:
+  image:
+    name: hypnoglow/kubernetes-helm:3.0
+    entrypoint: ["/bin/sh", "-c"]
+  stage: deploy
+  script:
+    - helm dependency update charts/konga/
+    - mkdir -p ./public
+    - "echo \"User-Agent: *\nDisallow: /\" > ./public/robots.txt"
+    - helm package charts/konga/ --destination ./public
+    - helm repo index --url https://${CI_PROJECT_NAMESPACE}.gitlab.io/${CI_PROJECT_NAME} .
+    - mv index.yaml ./public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
