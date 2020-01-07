@@ -1,5 +1,6 @@
 #
-# baseado em https://tobiasmaier.info/posts/2018/03/13/hosting-helm-repo-on-gitlab-pages.html
+# Pipeline para construir um helm chart com Gitlab Pages.
+# Baseado em https://tobiasmaier.info/posts/2018/03/13/hosting-helm-repo-on-gitlab-pages.html
 #
 lint:
   image:
