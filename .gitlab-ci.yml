@@ -20,7 +20,8 @@ pages:
     - mkdir -p ./public
     - "echo \"User-Agent: *\nDisallow: /\" > ./public/robots.txt"
     - helm package charts/konga/ --destination ./public
-    - helm repo index --url https://${CI_PROJECT_NAMESPACE}.gitlab.io/${CI_PROJECT_NAME} .
+    - helm repo index --url https://vertigobr.gitlab.io/vkpr/${CI_PROJECT_NAME} ./public
+    - cat index.yaml
     - mv index.yaml ./public
   artifacts:
     paths:
