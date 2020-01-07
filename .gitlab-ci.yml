@@ -21,8 +21,7 @@ pages:
     - "echo \"User-Agent: *\nDisallow: /\" > ./public/robots.txt"
     - helm package charts/konga/ --destination ./public
     - helm repo index --url https://vertigobr.gitlab.io/vkpr/${CI_PROJECT_NAME} ./public
-    - cat index.yaml
-    - mv index.yaml ./public
+    - cat ./public/index.yaml
   artifacts:
     paths:
       - public
