@@ -18,9 +18,10 @@ pages:
   script:
     - helm dependency update charts/konga/
     - mkdir -p ./public
-    - "echo \"User-Agent: *\nDisallow: /\" > ./public/robots.txt"
+    - "echo \"User-Agent: *\" > ./public/robots.txt"
+    - "echo \"Disallow: /\" >> ./public/robots.txt"
     - helm package charts/konga/ --destination ./public
-    - helm repo index --url https://vertigobr.gitlab.io/vkpr/${CI_PROJECT_NAME} ./public
+    - helm repo index --url https://vertigobr.gitlab.io/ipaas/${CI_PROJECT_NAME} ./public
     - cat ./public/index.yaml
   artifacts:
     paths:
