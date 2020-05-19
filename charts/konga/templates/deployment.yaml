@@ -20,10 +20,8 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       volumes:
-        - name: teste
-          emptyDir: {}
 {{- if .Values.extraVolumes }}
-{{ toYaml .Values.extraVolumes | indent 8}}
+{{ toYaml .Values.extraVolumes | indent 8 }}
 {{- end }}
       containers:
         - name: {{ .Chart.Name }}
