@@ -27,7 +27,7 @@ data:
   {{ else if eq .Values.config.node_env "production" }}
   KONGA_LOG_LEVEL: {{ default "warn" .Values.config.log_level }}
   {{- end }}
-  TOKEN_SECRET: {{ .Values.config.token_secret }}
+  TOKEN_SECRET: "{{ .Values.config.token_secret }}"
   KONGA_SEED_KONG_NODE_DATA_SOURCE_FILE: "{{ .Values.config.konga_node_data }}"
   KONGA_SEED_USER_DATA_SOURCE_FILE: "{{ .Values.config.konga_user_data }}"
   {{- end }}
