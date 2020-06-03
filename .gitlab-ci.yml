@@ -4,7 +4,7 @@
 #
 lint:
   image:
-    name: hypnoglow/kubernetes-helm:3.0
+    name: alpine/helm:3.1.1
     entrypoint: ["/bin/sh", "-c"]
   stage: test
   script:
@@ -12,7 +12,7 @@ lint:
 
 pages:
   image:
-    name: hypnoglow/kubernetes-helm:3.0
+    name: alpine/helm:3.1.1
     entrypoint: ["/bin/sh", "-c"]
   stage: deploy
   script:
